@@ -1,0 +1,13 @@
+server:
+  port: 8084
+spring:
+  application:
+    name: searchservice
+  cloud:
+    nacos:
+      server-addr: localhost:8848 # nacos地址
+logging:
+  level:
+    com.hmall: debug
+  pattern:
+    dateformat: HH:mm:ss:SSS

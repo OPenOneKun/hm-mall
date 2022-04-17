@@ -1,15 +1,11 @@
-package com.hmall.item.pojo;
+package com.hmall.feign.pojo;
 
-import com.baomidou.mybatisplus.annotation.*;
 import lombok.Data;
 
 import java.time.LocalDateTime;
-import java.util.Date;
 
 @Data
-@TableName("tb_item")
 public class Item {
-    @TableId(type = IdType.AUTO)
     private Long id;//商品id
     private String name;//商品名称
     private Long price;//价格（分）
@@ -21,10 +17,7 @@ public class Item {
     private Integer sold;//销量
     private Integer commentCount;//评论数
     private Integer status;//商品状态 1-正常，2-下架
-    @TableField("isAD")
     private Boolean isAD;//商品状态 1-正常，2-下架
-    @TableField(fill = FieldFill.INSERT)
     private LocalDateTime createTime;//创建时间
-    @TableField(fill = FieldFill.INSERT_UPDATE)
     private LocalDateTime updateTime;//更新时间
 }

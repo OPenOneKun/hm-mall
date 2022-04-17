@@ -4,7 +4,7 @@ spring:
   application:
     name: itemservice
   datasource:
-    url: jdbc:mysql://localhost:3307/test02?useSSL=false
+    url: jdbc:mysql://localhost:3307/hm_mall?useSSL=false
     username: root
     password: root
     driver-class-name: com.mysql.jdbc.Driver
