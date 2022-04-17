@@ -4,34 +4,7 @@
 黑马商城是基于当下最流行的微服务架构开发的电商商城系统，旨在给用户一个高效，流畅的购物体验
 
 #### 软件架构
-软件架构说明
+![img](https://pcsdata.baidu.com/thumbnail/0cc7629b1h0e847f7b568d7456034eb3?fid=2986883333-16051585-782567799037251&rt=pr&sign=FDTAER-yUdy3dSFZ0SVxtzShv1zcMqd-ODF5Op0zvriOMQacFhBVwHJUSXY%3D&expires=2h&chkv=0&chkbd=0&chkpc=&dp-logid=166312187764600330&dp-callid=0&time=1650175200&bus_no=26&size=c1600_u1600&quality=100&vuk=-&ft=video)
 
 
-#### 安装教程
-
-1.  xxxx
-2.  xxxx
-3.  xxxx
-
-#### 使用说明
-
-1.  xxxx
-2.  xxxx
-3.  xxxx
-
-#### 参与贡献
-
-1.  Fork 本仓库
-2.  新建 Feat_xxx 分支
-3.  提交代码
-4.  新建 Pull Request
-
-
-#### 特技
-
-1.  使用 Readme\_XXX.md 来支持不同的语言，例如 Readme\_en.md, Readme\_zh.md
-2.  Gitee 官方博客 [blog.gitee.com](https://blog.gitee.com)
-3.  你可以 [https://gitee.com/explore](https://gitee.com/explore) 这个地址来了解 Gitee 上的优秀开源项目
-4.  [GVP](https://gitee.com/gvp) 全称是 Gitee 最有价值开源项目，是综合评定出的优秀开源项目
-5.  Gitee 官方提供的使用手册 [https://gitee.com/help](https://gitee.com/help)
-6.  Gitee 封面人物是一档用来展示 Gitee 会员风采的栏目 [https://gitee.com/gitee-stars/](https://gitee.com/gitee-stars/)
+#### 
