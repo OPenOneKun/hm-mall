@@ -12,6 +12,7 @@ import com.hmall.item.pojo.Item;
 import com.hmall.item.service.IItemService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -60,6 +61,7 @@ public class ItemService extends ServiceImpl<ItemMapper, Item> implements IItemS
      * @param item
      */
     @Override
+    @Transactional
     public void addItem(Item item) {
 
         itemMapper.insert(item);
@@ -71,6 +73,7 @@ public class ItemService extends ServiceImpl<ItemMapper, Item> implements IItemS
      * @param item
      */
     @Override
+    @Transactional
     public void updateStatus(Long id, Item item) {
         //创建条件构造器
         LambdaQueryWrapper<Item> lqw = new LambdaQueryWrapper<>();
@@ -85,6 +88,7 @@ public class ItemService extends ServiceImpl<ItemMapper, Item> implements IItemS
      * @param item
      */
     @Override
+    @Transactional
     public void updateItem(Item item) {
         LambdaQueryWrapper<Item> lqw = new LambdaQueryWrapper<>();
         lqw.eq(Item::getId,item.getId());
@@ -97,6 +101,7 @@ public class ItemService extends ServiceImpl<ItemMapper, Item> implements IItemS
      * @param id
      */
     @Override
+    @Transactional
     public void deleteItem(Long id) {
         LambdaQueryWrapper<Item> lqw = new LambdaQueryWrapper<>();
         lqw.eq(Item::getId,id);

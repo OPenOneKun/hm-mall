@@ -20,10 +20,17 @@ public class ItemDoc {
     private Boolean isAD;//商品状态 1-正常，2-下架
     private List<String> suggestion = new ArrayList<>(2);
 
-    public ItemDoc(Item item) {
-        BeanUtils.copyProperties(item,this);
-
-        suggestion.add(item.getBrand());
-        suggestion.add(item.getCategory());
-    }
+//    public ItemDoc(Item item) {
+//        this.id = item.getId();
+//        this.name=item.getName();
+//        this.price = item.getPrice();
+//        this.image = item.getImage();
+//        this.category=item.getCategory();
+//        this.brand=item.getBrand();
+//        this.sold=item.getSold();
+//        this.commentCount=item.getCommentCount();
+//        this.isAD=item.getIsAD();
+//        suggestion.add(item.getBrand());
+//        suggestion.add(item.getCategory());
+//    }
 }

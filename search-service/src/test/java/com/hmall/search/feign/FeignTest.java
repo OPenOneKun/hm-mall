@@ -30,40 +30,39 @@ public class FeignTest {
     @Autowired
     private RestHighLevelClient restHighLevelClient;
 
-    @Test
-    public void testItem() throws IOException {
-        int page =1;
-        while (true) {
-            //分页查询所有数据
-            PageDTO<Item> itemPageDTO = itemClient.itemPage(page, 500);
-
-            //拿到每页数据
-            List<Item> itemList = itemPageDTO.getList();
-
-            if(itemList.size()<=0){
-                break;
-            }
-
-            //创建BulkRequest
-            BulkRequest bulkRequest = new BulkRequest();
-
-            //遍历每页数据
-            for (Item item : itemList) {
-                //将普通商品类型转换为商品文档类型
-                ItemDoc itemDoc = new ItemDoc(item);
-                //添加到bulk
-                bulkRequest.add(new IndexRequest("item")
-                        .id(item.getId().toString())
-                        .source(JSON.toJSONString(itemDoc), XContentType.JSON)
-                );
-            }
-            BulkResponse response = restHighLevelClient.bulk(bulkRequest, RequestOptions.DEFAULT);
-
-            System.out.println("response="+response);
-            page++;
-        }
-
-    }
+//    @Test
+//    public void testItem() throws IOException {
+//        int page =1;
+//        while (true) {
+//            //分页查询所有数据
+//            PageDTO<Item> itemPageDTO = itemClient.itemPage(page, 500);
+//
+//            //拿到每页数据
+//            List<Item> itemList = itemPageDTO.getList();
+//
+//            if(itemList.size()<=0){
+//                break;
+//            }
+//            //创建BulkRequest
+//            BulkRequest bulkRequest = new BulkRequest();
+//
+//            //遍历每页数据
+//            for (Item item : itemList) {
+//                //将普通商品类型转换为商品文档类型
+//                ItemDoc itemDoc = new ItemDoc(item);
+//                //添加到bulk
+//                bulkRequest.add(new IndexRequest("item")
+//                        .id(item.getId().toString())
+//                        .source(JSON.toJSONString(itemDoc), XContentType.JSON)
+//                );
+//            }
+//            BulkResponse response = restHighLevelClient.bulk(bulkRequest, RequestOptions.DEFAULT);
+//
+//            System.out.println("response="+response);
+//            page++;
+//        }
+//
+//    }
 
     @Test
     public void testItem2() throws IOException {

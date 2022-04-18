@@ -6,6 +6,12 @@ spring:
   cloud:
     nacos:
       server-addr: localhost:8848 # nacos地址
+  rabbitmq:
+    host: 192.168.17.132 # 主机名
+    port: 5672 # 端口
+    virtual-host: / # 虚拟主机
+    username: itcast # 用户名
+    password: 123321 # 密码
 logging:
   level:
     com.hmall: debug

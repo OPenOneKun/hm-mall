@@ -1,8 +1,10 @@
 package com.hmall.item.web;
 
 import com.hmall.common.dto.PageDTO;
+import com.hmall.item.constatnts.MqConstants;
 import com.hmall.item.pojo.Item;
 import com.hmall.item.service.IItemService;
+import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -12,6 +14,8 @@ public class ItemController {
 
     @Autowired
     private IItemService itemService;
+    @Autowired
+    private RabbitTemplate rabbitTemplate;
 
     /**
      * 分页查询所有商品
@@ -40,6 +44,9 @@ public class ItemController {
     @PostMapping
     public void addItem(@RequestBody Item item){
       itemService.addItem(item);
+      //发送MQ消息到队列
+      rabbitTemplate.convertAndSend(MqConstants.item_EXCHANGE,MqConstants.item_INSERT_KEY,item.getId());
+
     }
 
     /**
@@ -49,8 +56,14 @@ public class ItemController {
      */
     @PutMapping("/status/{id}/{status}")
     public void updateStatus(@PathVariable Long id,Item item){
-
         itemService.updateStatus(id,item);
+        //发送MQ消息到队列
+        if(item.getStatus()==2){
+            rabbitTemplate.convertAndSend(MqConstants.item_EXCHANGE,MqConstants.item_DELETE_KEY,id);
+        }else {
+            rabbitTemplate.convertAndSend(MqConstants.item_EXCHANGE,MqConstants.item_INSERT_KEY,item.getId());
+        }
+
     }
 
     /**
@@ -60,11 +73,18 @@ public class ItemController {
     @PutMapping
     public void updateItem(@RequestBody Item item){
         itemService.updateItem(item);
+        //发送MQ消息到队列
+        rabbitTemplate.convertAndSend(MqConstants.item_EXCHANGE,MqConstants.item_INSERT_KEY,item.getId());
     }
 
+    /**
+     * 删除商品
+     * @param id
+     */
     @DeleteMapping("/{id}")
     public void deleteItem(@PathVariable Long id){
         itemService.deleteItem(id);
-
+        //发送MQ消息到队列
+        rabbitTemplate.convertAndSend(MqConstants.item_EXCHANGE,MqConstants.item_DELETE_KEY,id);
     }
 }
